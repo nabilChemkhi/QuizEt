@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         title=findViewById(R.id.mainTitleId);
         startBtn=findViewById(R.id.startBtnId);
 
-        //Typeface typeFace = ResourcesCompat.getFont(this,R.font.blackList);
-        //title.setTypeface(typeFace);
+        Typeface typeFace = ResourcesCompat.getFont(this,R.font.blacklist);
+        title.setTypeface(typeFace);
 
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
