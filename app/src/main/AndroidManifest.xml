@@ -10,8 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizEt">
         <activity
+            android:name=".SetsActivity"
+            android:exported="true" />
+        <activity
             android:name=".SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,9 +26,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
-
-
+            android:exported="true" />
     </application>
 
 </manifest>
