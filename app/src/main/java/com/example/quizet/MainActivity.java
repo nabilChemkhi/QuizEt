@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    //widgets
     private TextView title;
     private Button startBtn;
 
@@ -18,13 +19,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //binding
         title=findViewById(R.id.mainTitleId);
         startBtn=findViewById(R.id.startBtnId);
 
         Typeface typeFace = ResourcesCompat.getFont(this,R.font.blacklist);
         title.setTypeface(typeFace);
 
+       //Listeners
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

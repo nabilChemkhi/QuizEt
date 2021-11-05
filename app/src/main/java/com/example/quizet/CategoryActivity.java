@@ -8,21 +8,36 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.GridView;
 
-public class CategoryActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
+public class CategoryActivity extends AppCompatActivity {
+    //widgets
     private GridView catGridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-
+   //binding
         Toolbar toolbar=findViewById(R.id.toolBarId);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Categories");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         catGridView = findViewById(R.id.categoryGridViewId);
+
+        List<String> categoryList=new ArrayList<>();
+        categoryList.add("Cat 1");
+        categoryList.add("Cat 2");
+        categoryList.add("Cat 3");
+        categoryList.add("Cat 4");
+        categoryList.add("Cat 5");
+        categoryList.add("Cat 6");
+
+        CategoryAdapter adapter=new CategoryAdapter(categoryList);
+        catGridView.setAdapter(adapter);
+
     }
 
     @Override
