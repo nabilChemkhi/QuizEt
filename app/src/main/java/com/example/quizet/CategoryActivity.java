@@ -34,6 +34,12 @@ public class CategoryActivity extends AppCompatActivity {
         categoryList.add("Cat 4");
         categoryList.add("Cat 5");
         categoryList.add("Cat 6");
+        categoryList.add("Cat 7");
+        categoryList.add("Cat 8");
+        categoryList.add("Cat 9");
+        categoryList.add("Cat 10");
+        categoryList.add("Cat 11");
+        categoryList.add("Cat 12");
 
         CategoryAdapter adapter=new CategoryAdapter(categoryList);
         catGridView.setAdapter(adapter);

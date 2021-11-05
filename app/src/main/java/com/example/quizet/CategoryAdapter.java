@@ -1,5 +1,6 @@
 package com.example.quizet;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,16 @@ public class CategoryAdapter extends BaseAdapter {
         else {
             view=convertView;
         }
+        //onclicklistener pour acceder aux sets
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(parent.getContext(), SetsActivity.class);
+                intent.putExtra("Category",categoryList.get(position));
+                parent.getContext().startActivity(intent);
+            }
+        });
+
         ((TextView) view.findViewById(R.id.categoryName)).setText(categoryList.get(position));
         Random rnd=new Random();
         int color = Color.argb(255, rnd.nextInt(255), rnd.nextInt(255), rnd.nextInt(255));
