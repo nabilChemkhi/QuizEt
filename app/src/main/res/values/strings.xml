@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">QuizEt</string>
+    <string name="start">Start</string>
+
 </resources>
