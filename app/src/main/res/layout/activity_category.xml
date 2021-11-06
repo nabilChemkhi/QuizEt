@@ -10,7 +10,7 @@
         android:id="@+id/toolBarId"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/purple_500">
+        android:background="?attr/colorSecondaryVariant">
 
     </androidx.appcompat.widget.Toolbar>
     <GridView
