@@ -37,8 +37,9 @@ public class SetAdapter extends BaseAdapter {
         }
         else {
             view=convertView;
-            ((TextView) view.findViewById(R.id.setNo_tv)).setText(String.valueOf(position+1));
         }
+            ((TextView) view.findViewById(R.id.setNo_tv)).setText(String.valueOf(position + 1));
+
         return view;
     }
 }
