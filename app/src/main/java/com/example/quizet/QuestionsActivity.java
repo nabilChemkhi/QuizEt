@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.Animator;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
@@ -22,6 +25,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
 
     private List<Question> questionList;
     private  int curentQust;
+    private CountDownTimer countDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +76,11 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void startTimer() {
-        CountDownTimer countDown = new CountDownTimer(10000,1000) {
+         countDown = new CountDownTimer(11000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                timer.setText(String.valueOf(millisUntilFinished / 1000));
+                if(millisUntilFinished < 10000)
+                  timer.setText(String.valueOf(millisUntilFinished / 1000));
 
             }
 
@@ -106,22 +111,59 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                 break;
             default:
         }
-     checkAnswer(selectedOption);
+        countDown.cancel();
+     checkAnswer(selectedOption , v);
     }
 
-    private void checkAnswer(int selectedOption) {
+    private void checkAnswer(int selectedOption, View view) {
         if(selectedOption==questionList.get(curentQust).getCorrectAnswer()){
             //right answer
+            ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
         }
         else {
             //wrong answer
+            ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+            switch (questionList.get(curentQust).getCorrectAnswer()){
+                case 1:
+                    option1.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    break;
+                case 2:
+                    option2.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    break;
+                case 3:
+                    option3.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    break;
+                case 4:
+                    option4.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+                    break;
+                default://
+            }
         }
-        changeQuestion();
+        //delais before changing quest
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                changeQuestion();
+
+            }
+        },2000);
+
     }
 
     private void changeQuestion() {
         if(curentQust < questionList.size() - 1){
-            playAnimation(option1,0);
+            curentQust ++ ;
+            playAnimation(question,0,0);
+            playAnimation(option1,0,1);
+            playAnimation(option2,0,2);
+            playAnimation(option3,0,3);
+            playAnimation(option4,0,4);
+
+            qustCount.setText(String.valueOf(curentQust + 1) + "/" + questionList.size());
+            timer.setText(String.valueOf(10));
+            startTimer();
+
         }
         else{
             //score activity
@@ -131,12 +173,37 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    private void playAnimation(View view, final int value) {
+    private void playAnimation(View view, final int value, int numView) {
         view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500)
                 .setStartDelay(100).setInterpolator(new DecelerateInterpolator())
                 .setListener(new Animator.AnimatorListener() {
                     @Override
                     public void onAnimationStart(Animator animation) {
+                        if (value==0){
+                            switch (numView){
+                                case 0:
+                                    ((TextView) view).setText(questionList.get(curentQust).getQuestion());
+                                    break;
+                                case 1:
+                                    ((Button) view).setText(questionList.get(curentQust).getOptionA());
+                                    break;
+                                case 2:
+                                    ((Button) view).setText(questionList.get(curentQust).getOptionB());
+                                    break;
+                                case 3:
+                                    ((Button) view).setText(questionList.get(curentQust).getOptionC());
+                                    break;
+                                case 4:
+                                    ((Button) view).setText(questionList.get(curentQust).getOptionD());
+                                    break;
+                                //default://
+                            }
+                            if(numView != 0)
+                               // ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("0000FF")));
+                                ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.BLUE));
+                            playAnimation(view,1,numView);
+
+                        }
 
                     }
 

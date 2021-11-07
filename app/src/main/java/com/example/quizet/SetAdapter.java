@@ -1,5 +1,6 @@
 package com.example.quizet;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,16 @@ public class SetAdapter extends BaseAdapter {
         else {
             view=convertView;
         }
+
+        //on click listener to get question view
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(parent.getContext(),QuestionsActivity.class);
+                parent.getContext().startActivity(intent);
+            }
+        });
+
             ((TextView) view.findViewById(R.id.setNo_tv)).setText(String.valueOf(position + 1));
 
         return view;
