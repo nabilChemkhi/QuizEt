@@ -205,7 +205,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                                 case 4:
                                     ((Button) view).setText(questionList.get(curentQust).getOptionD());
                                     break;
-                                //default://
+                                //default:
                             }
                             if(numView != 0)
                                // ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("0000FF")));
