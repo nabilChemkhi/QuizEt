@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
+        <entry key="..\:/Users/benour/AndroidStudioProjects/QuizEt-main/app/src/main/res/layout/activity_score.xml" value="0.1213768115942029" />
+=======
+>>>>>>> 7d7c7bfe8abece56cb82e6badc0ea13bd042fc8f
         <entry key="..\:/Users/nabil/AndroidStudioProjects/QuizEt/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.175" />
         <entry key="..\:/Users/nabil/AndroidStudioProjects/QuizEt/app/src/main/res/drawable/border.xml" value="0.2203125" />
         <entry key="..\:/Users/nabil/AndroidStudioProjects/QuizEt/app/src/main/res/drawable/ic_launcher_background.xml" value="0.175" />
