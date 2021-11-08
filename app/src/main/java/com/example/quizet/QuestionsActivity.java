@@ -177,8 +177,10 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
             //score activity
             Intent intent = new Intent(QuestionsActivity.this, ScoreActivity.class);
             intent.putExtra("SCORE",String.valueOf(score + "/" + questionList.size()));
+            //flag to clear all tasks activity history
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-            QuestionsActivity.this.finish();
+            //QuestionsActivity.this.finish();
         }
     }
 
@@ -234,6 +236,15 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
 
                     }
                 });
+
+
+
     }
 
+    //stop the timer
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        countDown.cancel();
+    }
 }
