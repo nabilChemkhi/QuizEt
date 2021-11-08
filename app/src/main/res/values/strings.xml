@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">QuizEt</string>
+    <string name="start">Start</string>
+    <string name="sets">sets</string>
+    <string name="score">Score</string>
+    <string name="finalScore">0 / 10</string>
+    <string name="done">Done</string>
+
+
+</resources>
