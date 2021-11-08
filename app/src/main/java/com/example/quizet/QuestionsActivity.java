@@ -22,10 +22,11 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     //widgets
     private TextView question, qustCount, timer;
     private Button option1,option2,option3,option4;
-
+    //attributes
     private List<Question> questionList;
     private  int curentQust;
     private CountDownTimer countDown;
+    private  int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,8 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
 
         getQuestionList();
 
+        score = 0;
+
     }
 
     private void getQuestionList() {
@@ -58,6 +61,10 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         questionList.add(new Question("quest4","A","B","Z","D",2));
         questionList.add(new Question("quest5","A","J","C","K",2));
         questionList.add(new Question("quest6","W","B","S","D",2));
+        questionList.add(new Question("quest7","X","B","Z","L",2));
+        questionList.add(new Question("quest8","A","B","Z","D",2));
+        questionList.add(new Question("quest9","A","J","C","K",2));
+        questionList.add(new Question("quest10","W","B","S","D",2));
 
         setQuestion();
     }
@@ -119,6 +126,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         if(selectedOption==questionList.get(curentQust).getCorrectAnswer()){
             //right answer
             ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+            score++ ;
         }
         else {
             //wrong answer
@@ -147,7 +155,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                 changeQuestion();
 
             }
-        },2000);
+        },1000);
 
     }
 
@@ -168,6 +176,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         else{
             //score activity
             Intent intent = new Intent(QuestionsActivity.this, ScoreActivity.class);
+            intent.putExtra("SCORE",String.valueOf(score + "/" + questionList.size()));
             startActivity(intent);
             QuestionsActivity.this.finish();
         }
