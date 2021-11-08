@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ScoreActivity">
+    tools:context=".ScoreActivity"
+    android:background="@color/ColorAccent">
 
 
     <LinearLayout
@@ -14,7 +15,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
-        android:background="@color/SkyBlue"
+        android:background="@color/ColorPrimary"
         android:orientation="vertical"
         android:paddingBottom="32dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,13 +30,14 @@
             android:gravity="center"
             android:text="@string/score"
             android:textSize="32sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/ColorAccent"/>
 
         <View
-            android:id="@+id/divider2"
+            android:id="@+id/divider3"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="?android:attr/listDivider" />
+            android:background="@color/ColorAccent" />
 
         <TextView
             android:id="@+id/sa_score"
@@ -44,7 +46,7 @@
             android:gravity="center"
             android:layout_margin="20dp"
             android:text="@string/finalScore"
-            android:textColor="@color/black"
+            android:textColor="@color/ColorAccent"
             android:textSize="32sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -56,9 +58,10 @@
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="64dp"
-        android:backgroundTint="@color/SkyBlue"
+
+
         android:text="done"
-        android:textColor="@color/black"
+        android:textColor="@color/ColorAccent"
 
         android:textSize="22sp"
 
@@ -67,5 +70,8 @@
         app:layout_constraintEnd_toEndOf="parent"
 
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+
+        android:background="@drawable/roun_corner2"
+        android:backgroundTint="@color/blue1"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
