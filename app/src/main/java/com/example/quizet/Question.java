@@ -17,7 +17,7 @@ public class Question {
         this.optionD = optionD;
         this.correctAnswer = correctAnswer;
     }
-
+// getters and setters
     public String getQuestion() {
         return question;
     }

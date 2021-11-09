@@ -45,7 +45,7 @@ public class CategoryActivity extends AppCompatActivity {
         catGridView.setAdapter(adapter);
 
     }
-
+    //return home click
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home){
