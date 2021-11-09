@@ -16,6 +16,24 @@ local.properties
 build.gradle
 .idea/misc.xml
 .idea/.name
+.idea
+gradle
+gradle.properties
+gradlew
+bradlew.bat
+setting.gradle
+
+
+
+/build.gradle
+/.idea/misc.xml
+/.idea/.name
+/.idea
+/gradle
+/gradle.properties
+/gradlew
+/bradlew.bat
+/setting.gradle
 
 
 .gradle
