@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         Typeface typeFace = ResourcesCompat.getFont(this,R.font.blacklist);
         title.setTypeface(typeFace);
 
-       //Listeners
+       //actions
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

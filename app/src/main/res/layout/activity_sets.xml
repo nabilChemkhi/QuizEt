@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SetsActivity">
+    tools:context=".SetsActivity"
+    android:background="@drawable/main_backround">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/set_toolbar"
@@ -30,9 +31,9 @@
         android:layout_weight="1"
         android:gravity="center"
         android:columnWidth="100dp"
-        android:horizontalSpacing="16dp"
-        android:verticalSpacing="16dp"
+        android:horizontalSpacing="32dp"
+        android:verticalSpacing="32dp"
         android:padding="16dp"
-        android:numColumns="auto_fit"></GridView>
+        android:numColumns="2"></GridView>
 
 </LinearLayout>
