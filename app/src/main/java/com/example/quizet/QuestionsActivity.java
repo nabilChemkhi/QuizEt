@@ -28,6 +28,12 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     private CountDownTimer countDown;
     private  int score;
 
+
+   // private  TextView bscoreTv;
+    int  bscr;
+    int ids;
+    private  AppDatabase appDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,15 +53,27 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         option3.setOnClickListener(this);
         option4.setOnClickListener(this);
 
-        getQuestionList();
+
 
         score = 0;
 
+
+
+        appDatabase = AppDatabase.getAppDatabase(this);
+
+
+        //get set id from setAdapter
+        ids = getIntent().getIntExtra("ids",1);
+        //get best score from setAdapter
+        bscr = getIntent().getIntExtra("bscore",0);
+       // bscoreTv.setText(String.valueOf(bscr));
+
+        getQuestionList();
     }
 
-    private void getQuestionList() {
+     private void getQuestionList() {
         questionList = new ArrayList<>();
-        questionList.add(new Question("quest1","A","B","C","O",2));
+      /**  questionList.add(new Question("quest1","A","B","C","O",2));
         questionList.add(new Question("quest2","E","G","C","D",2));
         questionList.add(new Question("quest3","X","B","Z","L",2));
         questionList.add(new Question("quest4","A","B","Z","D",2));
@@ -65,7 +83,16 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         questionList.add(new Question("quest8","A","B","Z","D",2));
         questionList.add(new Question("quest9","A","J","C","K",2));
         questionList.add(new Question("quest10","W","B","S","D",2));
+*/
 
+
+          List<QuestionFromSet> scl=  appDatabase.questionFromSetDAO().getQuestionFromSet(ids);
+       //test sur tous les quest d la base
+        /// List<Question> xset=  appDatabase.questionDAO().getQuestions();
+
+         List<Question> xset= scl.get(0).questions;
+         // int x=xset.size();
+         questionList=xset;
         setQuestion();
     }
 
@@ -174,6 +201,8 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
 
         }
         else{
+            if(bscr<score){bscr = score;
+            appDatabase.setDAO().update(bscr,ids);}
             //score activity
             Intent intent = new Intent(QuestionsActivity.this, ScoreActivity.class);
             intent.putExtra("SCORE",String.valueOf(score + "/" + questionList.size()));

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuestionsActivity">
+    tools:context=".QuestionsActivity"
+    android:background="@drawable/main_backround">
 
     <LinearLayout
         android:id="@+id/linearLayout"

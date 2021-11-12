@@ -1,23 +1,48 @@
 package com.example.quizet;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "questionTable")
 public class Question {
 
+    @PrimaryKey//(autoGenerate = true)
+    private int questionId;
+    @ColumnInfo(name = "question")
     private String question;
-    private  String optionA;
-    private  String optionB;
-    private  String optionC;
-    private  String optionD;
-    private  int correctAnswer;
+    @ColumnInfo(name = "optionA")
+    private String optionA;
+    @ColumnInfo(name = "optionB")
+    private String optionB;
+    @ColumnInfo(name = "optionC")
+    private String optionC;
+    @ColumnInfo(name = "optionD")
+    private String optionD;
+    private int correctAnswer;
+    @ColumnInfo(name = "questionSetId")
+    private int questionSetId;
 
-    public Question(String question, String optionA, String optionB, String optionC, String optionD, int correctAnswer) {
+
+    public Question(int questionId, String question, String optionA, String optionB, String optionC, String optionD, int correctAnswer, int questionSetId) {
+        this.questionId = questionId;
         this.question = question;
         this.optionA = optionA;
         this.optionB = optionB;
         this.optionC = optionC;
         this.optionD = optionD;
         this.correctAnswer = correctAnswer;
+        this.questionSetId = questionSetId;
     }
-// getters and setters
+
+    public int getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(int questionId) {
+        this.questionId = questionId;
+    }
+
     public String getQuestion() {
         return question;
     }
@@ -64,5 +89,27 @@ public class Question {
 
     public void setCorrectAnswer(int correctAnswer) {
         this.correctAnswer = correctAnswer;
+    }
+
+    public int getQuestionSetId() {
+        return questionSetId;
+    }
+
+    public void setQuestionSetId(int questionSetId) {
+        this.questionSetId = questionSetId;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "questionId=" + questionId +
+                ", question='" + question + '\'' +
+                ", optionA='" + optionA + '\'' +
+                ", optionB='" + optionB + '\'' +
+                ", optionC='" + optionC + '\'' +
+                ", optionD='" + optionD + '\'' +
+                ", correctAnswer=" + correctAnswer +
+                ", questionSetId=" + questionSetId +
+                '}';
     }
 }

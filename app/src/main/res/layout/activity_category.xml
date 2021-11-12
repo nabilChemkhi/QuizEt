@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/main_backround"
     tools:context=".CategoryActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolBarId"
@@ -17,12 +18,16 @@
     <GridView
         android:id="@+id/categoryGridViewId"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_gravity="center"
-        android:background="@drawable/border"
-        android:columnWidth="100dp"
-        android:numColumns="2">
+        android:verticalSpacing="16dp"
+
+        android:layout_margin="16dp"
+        android:columnWidth="50dp"
+
+        android:numColumns="1"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     </GridView>
 

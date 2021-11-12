@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.core.view.LayoutInflaterCompat;
@@ -16,10 +17,19 @@ import java.util.Random;
 
 public class CategoryAdapter extends BaseAdapter {
 
-    private List<String> categoryList;
+   /** private List<String> categoryList;
 
     public CategoryAdapter(List<String> categoryList) {
         this.categoryList = categoryList;
+    }*/
+
+   private List<Category> categoryList;
+
+
+    public CategoryAdapter(List<Category> categoryList) {
+        this.categoryList = categoryList;
+
+
     }
 
 
@@ -52,16 +62,46 @@ public class CategoryAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(parent.getContext(), SetsActivity.class);
+               /** Intent intent = new Intent(parent.getContext(), SetsActivity.class);
                 intent.putExtra("Category",categoryList.get(position));
+                parent.getContext().startActivity(intent);*/
+
+                Intent intent = new Intent(parent.getContext(), SetsActivity.class);
+                intent.putExtra("Category",categoryList.get(position).getName());
+
+
+                intent.putExtra("id1",categoryList.get(position).getCategoryId());
+
                 parent.getContext().startActivity(intent);
             }
         });
 
-        ((TextView) view.findViewById(R.id.categoryName)).setText(categoryList.get(position));
-        Random rnd=new Random();
+        ((TextView) view.findViewById(R.id.categoryName)).setText(categoryList.get(position).getName());//categoryList.get(position));
+    int i= categoryList.get(position).getCategoryId();
+    switch (i) {
+        case 1:
+
+            ((ImageView) view.findViewById(R.id.miamgeview)).setImageResource(R.drawable.ball);
+          break;
+        case  2:
+            ((ImageView) view.findViewById(R.id.miamgeview)).setImageResource(R.drawable.golf);
+       break;
+        case  3:
+            ((ImageView) view.findViewById(R.id.miamgeview)).setImageResource(R.drawable.g);
+            break;
+        case  4:
+            ((ImageView) view.findViewById(R.id.miamgeview)).setImageResource(R.drawable.cine);
+            break;
+        case  5:
+            ((ImageView) view.findViewById(R.id.miamgeview)).setImageResource(R.drawable.swimmer17_41361);
+            break;
+        default:
+    }
+
+                //(categoryList.get(position).getImageCateg());
+        /*  Random rnd=new Random();
         int color = Color.argb(255, rnd.nextInt(255), rnd.nextInt(255), rnd.nextInt(255));
-        view.setBackgroundColor(color);
+        view.setBackgroundColor(color);*/
 
 
         return view;

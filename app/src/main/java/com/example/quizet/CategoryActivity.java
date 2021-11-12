@@ -15,6 +15,10 @@ public class CategoryActivity extends AppCompatActivity {
     //widgets
     private GridView catGridView;
 
+
+    private  AppDatabase appDatabase;
+    private List<Category> catList = new ArrayList<Category>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +31,13 @@ public class CategoryActivity extends AppCompatActivity {
 
         catGridView = findViewById(R.id.categoryGridViewId);
 
-        List<String> categoryList=new ArrayList<>();
-        categoryList.add("Cat 1");
+//initialisation base
+        appDatabase = AppDatabase.getAppDatabase(this);
+        //get categories from db
+        catList = appDatabase.categoryDAO().getCategories();
+
+      /*  List<String> categoryList=new ArrayList<>();
+       categoryList.add("Cat 1");
         categoryList.add("Cat 2");
         categoryList.add("Cat 3");
         categoryList.add("Cat 4");
@@ -41,7 +50,8 @@ public class CategoryActivity extends AppCompatActivity {
         categoryList.add("Cat 11");
         categoryList.add("Cat 12");
 
-        CategoryAdapter adapter=new CategoryAdapter(categoryList);
+        CategoryAdapter adapter=new CategoryAdapter(categoryList);*/
+        CategoryAdapter adapter=new CategoryAdapter(catList);
         catGridView.setAdapter(adapter);
 
     }
